@@ -5,9 +5,8 @@ print("****************************")
 secret_number = 42
 
 total_of_guess = 3
-guess_round = 1
 
-while (total_of_guess >= guess_round):
+for guess_round in range(1, total_of_guess+1):
     print("Round {} of {}".format(guess_round, total_of_guess))
     guess = int(input("Insert number: "))
 
@@ -22,5 +21,3 @@ while (total_of_guess >= guess_round):
             print("Not this time... Your guess is too high.")
         else:
             print("Not this time... Your guess is too low.")
-
-    guess_round += 1
