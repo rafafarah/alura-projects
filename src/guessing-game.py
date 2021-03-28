@@ -8,7 +8,7 @@ total_of_guess = 3
 guess_round = 1
 
 while (total_of_guess >= guess_round):
-    print("Round", guess_round, "of", total_of_guess)
+    print("Round {} of {}".format(guess_round, total_of_guess))
     guess = int(input("Insert number: "))
 
     guessed_right   = guess == secret_number
