@@ -6,10 +6,13 @@ secret_number = 42
 
 guess = int(input("Insert number: "))
 
-if (secret_number == guess):
+guessed_right   = guess == secret_number
+is_higher       = guess > secret_number
+
+if (guessed_right):
     print("Congrats")
 else:
-    if (guess > secret_number):
+    if (is_higher):
         print("Not this time... Your guess is too high.")
     else:
         print("Not this time... Your guess is too low.")
