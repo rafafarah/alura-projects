@@ -9,4 +9,7 @@ guess = int(input("Insert number: "))
 if (secret_number == guess):
     print("Congrats")
 else:
-    print("Not this time...")
+    if (guess > secret_number):
+        print("Not this time... Your guess is too high.")
+    else:
+        print("Not this time... Your guess is too low.")
