@@ -41,3 +41,8 @@ for guess_round in range(1, total_of_guess+1):
         else:
             print("Not this time... Your guess is too low.")
         score -= (abs(secret_number - guess)) # penalty level is the distance from secret number
+
+if (guessed_right):
+    print("Good job!")
+else:
+    print("The secret number was {}. Good luck next time".format(secret_number))
