@@ -47,3 +47,6 @@ def play():
         print("Good job!")
     else:
         print("The secret number was {}. Good luck next time".format(secret_number))
+
+if (__name__ == "__main__"):
+    play()
