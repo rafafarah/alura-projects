@@ -5,7 +5,19 @@ print("Welcome to the Guessing Game")
 print("****************************")
 
 secret_number = random.randrange(1, 101) # generate numbers between 1 and 101
-total_of_guess = 3
+total_of_guess = 10
+
+print("Select a difficulty level:")
+print("(1) Easy, (2) Normal, (3) Hard")
+
+level = int(input("Difficulty level: "))
+
+if (level == 1):
+    total_of_guess = 20
+elif (level == 2):
+    total_of_guess = 10
+elif (level == 3):
+    total_of_guess = 5
 
 for guess_round in range(1, total_of_guess+1):
     print("Round {} of {}".format(guess_round, total_of_guess))
