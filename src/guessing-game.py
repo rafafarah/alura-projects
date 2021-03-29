@@ -1,9 +1,10 @@
+import random
+
 print("****************************")
 print("Welcome to the Guessing Game")
 print("****************************")
 
-secret_number = 42
-
+secret_number = random.randrange(1, 101) # generate numbers between 1 and 101
 total_of_guess = 3
 
 for guess_round in range(1, total_of_guess+1):
