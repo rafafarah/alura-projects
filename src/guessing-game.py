@@ -6,6 +6,7 @@ print("****************************")
 
 secret_number = random.randrange(1, 101) # generate numbers between 1 and 101
 total_of_guess = 10
+score = 1000
 
 print("Select a difficulty level:")
 print("(1) Easy, (2) Normal, (3) Hard")
@@ -32,9 +33,11 @@ for guess_round in range(1, total_of_guess+1):
 
     if (guessed_right):
         print("Congrats")
+        print("Final score: {}".format(score))
         break
     else:
         if (is_higher):
             print("Not this time... Your guess is too high.")
         else:
             print("Not this time... Your guess is too low.")
+        score -= (abs(secret_number - guess)) # penalty level is the distance from secret number
