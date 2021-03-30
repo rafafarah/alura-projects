@@ -3,7 +3,7 @@ def play():
     print("Welcome to the Hangman Game")
     print("***************************")
 
-    secret_word = "banana"
+    secret_word = "python"
     hanged = False
     won = False
 
