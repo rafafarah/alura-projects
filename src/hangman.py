@@ -3,8 +3,8 @@ def play():
     print("Welcome to the Hangman Game")
     print("***************************")
 
-    secret_word = "banana"
-    guessed_right = ["_", "_", "_", "_", "_", "_"]
+    secret_word = "banana".upper()
+    guessed_right = ["_" for letter in secret_word]
 
     hanged = False
     won = False
