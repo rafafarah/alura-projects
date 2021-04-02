@@ -1,9 +1,21 @@
+import random
+
 def play():
     print("***************************")
     print("Welcome to the Hangman Game")
     print("***************************")
 
-    secret_word = "banana".upper()
+    fileword = open("words.txt", "r")
+    words = []
+
+    for line in fileword:
+        words.append(line.strip())
+
+    fileword.close()
+
+    fileindex = random.randrange(0, len(words))
+
+    secret_word = words[fileindex].upper()
     guessed_right = ["_" for letter in secret_word]
 
     hanged = False
