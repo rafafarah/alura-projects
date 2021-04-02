@@ -2,7 +2,7 @@ import random
 
 def play():
     print_welcome_message()
-    secret_word = load_secret_word()
+    secret_word = load_secret_word("words.txt", 0)
 
     guessed_right = initialize_guessed_right(secret_word)
     print(guessed_right)
@@ -18,40 +18,46 @@ def play():
             fill_guessed_right(guess, secret_word, guessed_right)
         else:
             misses += 1
-            print("Opps, you missed! {} guesses remaining.".format(6-misses))
+            print("Opps, you missed! {} guesses remaining.".format(7-misses))
+            draw_hangman(misses)
 
-        hanged = (misses == 6)
+        hanged = (misses == 7)
         won = ("_" not in guessed_right)
         print(guessed_right)
 
     if (hanged):
-        print_game_over()
+        print_game_over(secret_word)
     else:
         print_win_message()
+
 
 def print_welcome_message():
     print("***************************")
     print("Welcome to the Hangman Game")
     print("***************************")
 
-def load_secret_word():
-    fileword = open("words.txt", "r")
+
+def load_secret_word(file_name = "words.txt", first_valid_line = 0):
+    fileword = open(file_name, "r")
     words = []
 
     for line in fileword:
         words.append(line.strip())
 
     fileword.close()
-    fileindex = random.randrange(0, len(words))
+    fileindex = random.randrange(first_valid_line, len(words))
     secret_word = words[fileindex].upper()
     return secret_word
+
 
 def initialize_guessed_right(secret):
     return ["_" for letter in secret]
 
+
 def read_guess():
     guess = input("\nYour guess: ")
     return guess.strip().upper()
+
 
 def fill_guessed_right(guess, secret_word, guessed_right):
     index = 0
