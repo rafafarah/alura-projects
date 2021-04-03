@@ -21,17 +21,22 @@ class Account:
         self.withdraw(value)
         dest.deposit(value)
 
-    def get_number(self):
+    @property
+    def number(self):
         return self.__number
 
-    def get_holder(self):
+    @property
+    def holder(self):
         return self.__holder
 
-    def get_balance(self):
+    @property
+    def balance(self):
         return self.__balance
 
-    def get_limit(self):
+    @property
+    def limit(self):
         return self.__limit
 
-    def set_limit(self, limit):
+    @limit.setter
+    def limit(self, limit):
         self.__limit = limit
