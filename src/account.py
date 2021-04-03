@@ -2,16 +2,17 @@ class Account:
 
     def __init__(self, number, holder, balance, limit = 1000.0):
         print("Building object.. {}".format(self))
-        self.number = number
-        self.holder = holder
-        self.balance = balance
-        self.limit = limit
+        # declaring private attributes with __attribute
+        self.__number = number
+        self.__holder = holder
+        self.__balance = balance
+        self.__limit = limit
 
     def deposit(self, value):
-        self.balance += value
+        self.__balance += value
 
     def withdraw(self, value):
-        self.balance -= value
+        self.__balance -= value
 
     def statement(self):
-        print("Current balance for {} is {}".format(self.holder, self.balance))
+        print("Current balance for {} is {}".format(self.__holder, self.__balance))
