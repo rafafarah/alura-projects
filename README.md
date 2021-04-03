@@ -1,4 +1,4 @@
-# python3-alura
+# python3-games-alura
 
 ### Projects:
 
