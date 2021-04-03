@@ -6,3 +6,12 @@ class Account:
         self.holder = holder
         self.balance = balance
         self.limit = limit
+
+    def deposit(self, value):
+        self.balance += value
+
+    def withdraw(self, value):
+        self.balance -= value
+
+    def statement(self):
+        print("Current balance for {} is {}".format(self.holder, self.balance))
