@@ -16,3 +16,7 @@ class Account:
 
     def statement(self):
         print("Current balance for {} is {}".format(self.__holder, self.__balance))
+
+    def transfer(self, dest, value):
+        self.withdraw(value)
+        dest.deposit(value)
