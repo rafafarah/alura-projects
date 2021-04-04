@@ -11,8 +11,16 @@ class Account:
     def deposit(self, value):
         self.__balance += value
 
+    # private method
+    def __has_enough_limit(self, value_to_withdraw):
+        max_withdraw_value = self.balance + self.limit
+        return (value_to_withdraw <= max_withdraw_value)
+
     def withdraw(self, value):
-        self.__balance -= value
+        if(self.__has_enough_limit(value)):
+            self.__balance -= value
+        else:
+            print("Value {} is out of limit".format(value))
 
     def statement(self):
         print("Current balance for {} is {}".format(self.__holder, self.__balance))
