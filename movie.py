@@ -12,6 +12,6 @@ class Movie(AudioVisual):
     @duration.setter
     def duration(self, new_duration):
         self._duration = new_duration
-    
+
     def __str__(self):
         return f'{self._name} - {self.year} - {self._duration} min - {self.likes} likes'

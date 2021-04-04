@@ -12,6 +12,6 @@ class Serie(AudioVisual):
     @seasons.setter
     def seasons(self, new_seasons):
         self._seasons = new_seasons
-    
+
     def __str__(self):
         return f'{self._name} - {self.year} - {self._seasons} seasons - {self.likes} likes'
