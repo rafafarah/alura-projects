@@ -48,3 +48,7 @@ class Account:
     @limit.setter
     def limit(self, limit):
         self.__limit = limit
+
+    @staticmethod
+    def bank_code():
+        return "001"
