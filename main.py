@@ -35,6 +35,7 @@ def writing_using_try_finally():
     finally:
         contact_file.close()
 
+
 def writing_using_with_as():
     try:
         with open("data/contacts_iso8859-1.csv", encoding='latin_1') as contact_file:
