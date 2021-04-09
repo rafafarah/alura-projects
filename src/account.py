@@ -3,10 +3,14 @@ class Account:
     operation_tax = None
 
     def __init__(self, client, ag, number):
-        self.balance = 0
+        self.__balance = 0
+        self.__ag = 0
+        self.__number = 0
+
         self.client = client
-        self.ag =  ag
-        self.number = number
+        self.__set_ag(ag)
+        self.__set_number(number)
+
         Account.total_accounts += 1
         Account.operation_tax = 30 / Account.total_accounts
 
