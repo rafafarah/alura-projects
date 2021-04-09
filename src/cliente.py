@@ -5,9 +5,3 @@ class Client:
         self.name = name
         self.cpf = cpf
         self.occupation = occupation
-
-client = Client('jhon doe', '123.456.789-00', 'dev')
-
-# print attribute as dictionary
-# print(client.__dict__)
-pprint(client.__dict__, width=40)
