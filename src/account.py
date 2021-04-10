@@ -45,7 +45,7 @@ class Account:
     def balance(self, balance):
         if (not isinstance(balance, int)):
             raise TypeError('Attribute must be an integer')
-        if (number <0):
+        if (balance <0):
             raise ValueError('Attribute must be positive')
 
         self.__balance = balance
