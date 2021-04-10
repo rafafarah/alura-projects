@@ -1,7 +1,7 @@
 import sys
 from cliente import Client
 from account import Account
-from exceptions import NotEnoughBlanceError
+from exceptions import NotEnoughBalanceError, FinanceOperationError
 
 def main():
 
