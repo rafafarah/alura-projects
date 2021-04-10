@@ -1,4 +1,4 @@
-from exceptions import NotEnoughBlanceError
+from exceptions import NotEnoughBlanceError, FinanceOperationError
 
 class Account:
     total_accounts = 0
@@ -53,7 +53,11 @@ class Account:
         self.__balance = balance
 
     def transfer(self, value, dest):
-        self.withdraw(value)
+        try:
+            self.withdraw(value)
+        except NotEnoughBlanceError as E:
+            E.args = ()
+            raise FinanceOperationError("Operation not executed") from E
         dest.deposit(value)
 
     def withdraw(self, value):
