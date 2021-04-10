@@ -23,17 +23,17 @@ def main():
 
 
 def test_account_operations():
+    acc1 = Account(None, 111, 222)
+    acc2 = Account(None, 112, 223)
     try:
-        acc1 = Account(None, 111, 222)
-        acc2 = Account(None, 112, 223)
-
+        acc1.withdraw(10)
         acc1.deposit(50)
         acc1.transfer(-50, acc2)
         print('Balance acc1: ', acc1.balance)
         print('Balance acc2: ', acc2.balance)
 
-    except NotEnoughBlanceError as E:
-        print(E.args)
+    except FinanceOperationError as E:
+        print(E)
     except ValueError as E:
         print(E)
 
