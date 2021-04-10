@@ -2,6 +2,7 @@ import sys
 from cliente import Client
 from account import Account
 from exceptions import NotEnoughBalanceError, FinanceOperationError
+from filereader import FileReader
 
 def main():
 
@@ -37,6 +38,25 @@ def test_account_operations():
     except ValueError as E:
         print(E)
 
+
+def test_file_reader():
+    # try:
+    #     reader = FileReader('file.txt')
+    #     reader.read_next_line()
+    #     reader.read_next_line()
+    #     reader.read_next_line()
+    # # except IOError:
+    # #     print('IOError exception')
+    # finally:
+    #     # check if variable reader exists
+    #     # this might be dangerous if other reader
+    #     # has been declared before
+    #     if ('reader' in locals()):
+    #         reader.close()
+
+    # ensure that resources will be freed properly
+    with FileReader('file.txt') as reader:
+        reader.read_next_line()
 
 if(__name__ == '__main__'):
     main()
