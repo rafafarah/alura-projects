@@ -1,4 +1,7 @@
-class NotEnoughBlanceError(Exception):
+class FinanceOperationError(Exception):
+    pass
+
+class NotEnoughBalanceError(FinanceOperationError):
     def __init__(self, message='', balance=None, value=None):
         # # debbugger
         # import pdb
