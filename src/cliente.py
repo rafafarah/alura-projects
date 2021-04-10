@@ -1,4 +1,4 @@
-from pprint import pprint
+# from pprint import pprint
 
 class Client:
     def __init__(self, name, cpf, occupation):
