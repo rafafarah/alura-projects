@@ -51,6 +51,7 @@ class Account:
         self.__balance = balance
 
     def transfer(self, value, dest):
+        self.withdraw(value)
         dest.deposit(value)
 
     def withdraw(self, value):
