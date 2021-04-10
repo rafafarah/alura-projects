@@ -7,4 +7,5 @@ class NotEnoughBlanceError(Exception):
         self.value = value
         msg = 'Not enough balance for the operation\n' \
             f'Current balance: {self.balance}, Value to withdraw: {self.value}'
-        super(NotEnoughBlanceError, self).__init__(message or msg)
+        self.msg = message or msg
+        super(NotEnoughBlanceError, self).__init__(self.msg, self.balance, self.value)
