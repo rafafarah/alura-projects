@@ -8,7 +8,8 @@ class Account:
         self.__balance = 0
         self.__ag = 0
         self.__number = 0
-
+        self.withdraws_blocked = 0
+        self.transfers_blocked = 0
         self.client = client
         self.__set_ag(ag)
         self.__set_number(number)
@@ -56,6 +57,7 @@ class Account:
         try:
             self.withdraw(value)
         except NotEnoughBlanceError as E:
+            self.transfers_blocked += 1
             E.args = ()
             raise FinanceOperationError("Operation not executed") from E
         dest.deposit(value)
@@ -64,6 +66,7 @@ class Account:
         if(value<0):
             raise ValueError('Value must be positive')
         if(self.balance < value):
+            self.withdraws_blocked += 1
             raise NotEnoughBlanceError(balance=self.balance, value=value)
         self.balance -= value
 
