@@ -1,3 +1,5 @@
+from exceptions import NotEnoughBlanceError
+
 class Account:
     total_accounts = 0
     operation_tax = None
@@ -55,8 +57,14 @@ class Account:
         dest.deposit(value)
 
     def withdraw(self, value):
-        self.__balance -= value
+        if(value<0):
+            raise ValueError('Value must be positive')
+        if(self.balance < value):
+            raise NotEnoughBlanceError(balance=self.balance, value=value)
+        self.balance -= value
 
     def deposit(self, value):
+        if(value<0):
+            raise ValueError('Value must be positive')
         self.__balance += value
 
