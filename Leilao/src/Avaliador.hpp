@@ -5,7 +5,8 @@
 class Avaliador
 {
 private:
-    float maiorValor;
+    float maiorValor = INT32_MIN;
+    float menorValor = INT32_MAX;
 public:
     void avalia(Leilao);
     float recuperaMaiorValor() const;
