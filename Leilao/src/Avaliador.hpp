@@ -9,6 +9,7 @@ private:
 public:
     void avalia(Leilao);
     float recuperaMaiorValor() const;
+    float recuperaMenorValor() const;
 };
 
 #endif /* Avaliador_hpp */
