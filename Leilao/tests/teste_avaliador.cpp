@@ -27,25 +27,25 @@ Leilao emOrdemDecrescente()
 
 TEST_CASE("Avaliador") {
     // Arrange: preparando ambiente
-    Avaliador leiloeiro;
+    Avaliador avaliador;
 
     SECTION("Leilões ordenados") {
         Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
 
         SECTION("Recuperar maior lance de leilão") {
             // Act: executando o código a ser testado
-            leiloeiro.avalia(leilao);
+            avaliador.avalia(leilao);
 
             // Assert: verificando a saída esperada
-            REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+            REQUIRE(2000 == avaliador.recuperaMaiorValor());
         }
 
         SECTION("Recuperar menor lance de leilão") {
             // Act: executando o código a ser testado
-            leiloeiro.avalia(leilao);
+            avaliador.avalia(leilao);
 
             // Assert: verificando a saída esperada
-            REQUIRE(1000 == leiloeiro.recuperaMenorValor());
+            REQUIRE(1000 == avaliador.recuperaMenorValor());
         }
     }
 
