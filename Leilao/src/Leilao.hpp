@@ -9,6 +9,7 @@ class Leilao
 private:
     std::vector<Lance> lances;
     std::string descricao;
+    bool usuarioAtualIgualUltimoUsuario(Lance lance) const;
 public:
     Leilao(std::string descricao);
     const std::vector<Lance>& recuperaLances() const;
