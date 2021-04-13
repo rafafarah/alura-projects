@@ -3,91 +3,73 @@
 #include "Avaliador.hpp"
 #include <iostream>
 
-TEST_CASE("Recuperar maior lance de leilão em ordem crescente") {
-    // Arrange: preparando ambiente
+Leilao emOrdemCrescente()
+{
     Lance primeiroLance(Usuario("Jorge"), 1000);
     Lance segundoLance(Usuario("Jorgita"), 2000);
     Leilao leilao("Fiat 147 0Km");
     leilao.recebeLance(primeiroLance);
     leilao.recebeLance(segundoLance);
-    Avaliador leiloeiro;
 
-    // Act: executando o código a ser testado
-    leiloeiro.avalia(leilao);
-
-    // Assert: verificando a saída esperada
-    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+    return leilao;
 }
 
-TEST_CASE("Recuperar maior lance de leilão em ordem decrescente") {
-    // Arrange: preparando ambiente
+Leilao emOrdemDecrescente()
+{
     Lance primeiroLance(Usuario("Jorge"), 2000);
     Lance segundoLance(Usuario("Jorgita"), 1000);
     Leilao leilao("Fiat 147 0Km");
     leilao.recebeLance(primeiroLance);
     leilao.recebeLance(segundoLance);
-    Avaliador leiloeiro;
 
-    // Act: executando o código a ser testado
-    leiloeiro.avalia(leilao);
-
-    // Assert: verificando a saída esperada
-    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+    return leilao;
 }
 
-TEST_CASE("Recuperar menor lance de leilão em ordem crescente") {
+TEST_CASE("Avaliador") {
     // Arrange: preparando ambiente
-    Lance primeiroLance(Usuario("Jorge"), 1000);
-    Lance segundoLance(Usuario("Jorgita"), 2000);
-    Leilao leilao("Fiat 147 0Km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
     Avaliador leiloeiro;
 
-    // Act: executando o código a ser testado
-    leiloeiro.avalia(leilao);
+    SECTION("Leilões ordenados") {
+        Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
 
-    // Assert: verificando a saída esperada
-    REQUIRE(1000 == leiloeiro.recuperaMenorValor());
-}
+        SECTION("Recuperar maior lance de leilão") {
+            // Act: executando o código a ser testado
+            leiloeiro.avalia(leilao);
 
-TEST_CASE("Recuperar menor lance de leilão em ordem decrescente") {
-    // Arrange: preparando ambiente
-    Lance primeiroLance(Usuario("Jorge"), 2000);
-    Lance segundoLance(Usuario("Jorgita"), 1000);
-    Leilao leilao("Fiat 147 0Km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
-    Avaliador leiloeiro;
+            // Assert: verificando a saída esperada
+            REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+        }
 
-    // Act: executando o código a ser testado
-    leiloeiro.avalia(leilao);
+        SECTION("Recuperar menor lance de leilão") {
+            // Act: executando o código a ser testado
+            leiloeiro.avalia(leilao);
 
-    // Assert: verificando a saída esperada
-    REQUIRE(1000 == leiloeiro.recuperaMenorValor());
-}
+            // Assert: verificando a saída esperada
+            REQUIRE(1000 == leiloeiro.recuperaMenorValor());
+        }
+    }
 
-TEST_CASE("Recuperar 3 maiores lances") {
-    // Arrange: preparando ambiente
-    Lance primeiroLance(Usuario("Jorge"), 1000);
-    Lance segundoLance(Usuario("Jorgita"), 2000);
-    Lance terceiroLance(Usuario("Jefferson"), 1500);
-    Lance quartoLance(Usuario("Jenifer"), 2500);
+    SECTION("Recuperar 3 maiores lances") {
+        // Arrange: preparando ambiente
+        Lance primeiroLance(Usuario("Jorge"), 1000);
+        Lance segundoLance(Usuario("Jorgita"), 2000);
+        Lance terceiroLance(Usuario("Jefferson"), 1500);
+        Lance quartoLance(Usuario("Jenifer"), 2500);
 
-    Leilao leilao("Fiat 147 0Km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
-    leilao.recebeLance(terceiroLance);
-    leilao.recebeLance(quartoLance);
-    Avaliador leiloeiro;
+        Leilao leilao("Fiat 147 0Km");
+        leilao.recebeLance(primeiroLance);
+        leilao.recebeLance(segundoLance);
+        leilao.recebeLance(terceiroLance);
+        leilao.recebeLance(quartoLance);
 
-    // Act: executando o código a ser testado
-    leiloeiro.avalia(leilao);
+        // Act: executando o código a ser testado
+        leiloeiro.avalia(leilao);
 
-    // Assert: verificando a saída esperada
-    auto maiores3Lances = leiloeiro.recupera3MaioresLances();
-    REQUIRE(3 == maiores3Lances.size());
-    REQUIRE(2500 == maiores3Lances[0].recuperaValor());
-    REQUIRE(2000 == maiores3Lances[1].recuperaValor());
-    REQUIRE(1500 == maiores3Lances[2].recuperaValor());
+        // Assert: verificando a saída esperada
+        auto maiores3Lances = leiloeiro.recupera3MaioresLances();
+        REQUIRE(3 == maiores3Lances.size());
+        REQUIRE(2500 == maiores3Lances[0].recuperaValor());
+        REQUIRE(2000 == maiores3Lances[1].recuperaValor());
+        REQUIRE(1500 == maiores3Lances[2].recuperaValor());
+    }
 }
