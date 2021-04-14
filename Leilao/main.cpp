@@ -30,6 +30,19 @@ int main() {
     exibeNome(nomeDele);
     exibeNome(nomeDela);
     exibeNome("string literal alocada na stack");
+    std::cout << "--------------------------" << std::endl;
+
+    Usuario* usuario = new Usuario("Jorge Jefferson");
+    std::cout << usuario->recuperaNome() << std::endl;
+    delete usuario;
+    std::cout << "--------------------------" << std::endl;
+
+    std::unique_ptr<Usuario> usuaria = std::make_unique<Usuario>(Usuario("Jorgita Jeniffer"));
+    std::cout << usuaria->recuperaNome() << std::endl;
+    std::cout << "--------------------------" << std::endl;
+
+    std::shared_ptr<Usuario> usuarita = std::make_shared<Usuario>("Jorgita Jeniffer");
+    exibeNomeUsuario(usuarita);
 
     return 0;
 }
