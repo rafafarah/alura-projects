@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <string_view>
+#include <memory>
+#include "Usuario.hpp"
 
 void* operator new(size_t bytes)
 {
@@ -11,6 +12,11 @@ void* operator new(size_t bytes)
 void exibeNome(std::string_view nome)
 {
     std::cout << nome << std::endl;
+}
+
+void exibeNomeUsuario(std::shared_ptr<Usuario> usuario)
+{
+    std::cout << usuario->recuperaNome() << std::endl;
 }
 
 int main() {
