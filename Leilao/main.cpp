@@ -3,11 +3,11 @@
 #include <memory>
 #include "Usuario.hpp"
 
-void* operator new(size_t bytes)
-{
-    std::cout << "Alocando " << bytes << " bytes" << std::endl;
-    return malloc(bytes);
-}
+// void* operator new(size_t bytes)
+// {
+//     std::cout << "Alocando " << bytes << " bytes" << std::endl;
+//     return malloc(bytes);
+// }
 
 void exibeNome(std::string_view nome)
 {
@@ -19,7 +19,7 @@ void exibeNomeUsuario(std::shared_ptr<Usuario> usuario)
     std::cout << usuario->recuperaNome() << std::endl;
 }
 
-int main() {
+int main_() {
     std::cout << "--------------------------" << std::endl;
     // Small String Optimization(SSO) - alloc memory on stack instead of heap
     std::string nomeCasal = "Jorge Jefferson Jefferson & Jorgita Jeniffer Jeniffer";
