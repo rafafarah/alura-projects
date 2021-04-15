@@ -13,5 +13,10 @@
 # listArg = url.split("=")
 # print(listArg)
 
+from url_args_extractor import UrlArgsExtractor
 
+url = UrlArgsExtractor("https:://www.bytebank.com.br/exchange?src=brl&dest=usd&value=1500")
+print(url.url)
 
+src, dest = url.extractArgs()
+print(src, dest)
