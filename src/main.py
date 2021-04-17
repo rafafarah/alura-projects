@@ -19,4 +19,5 @@ url = UrlArgsExtractor("https:://www.bytebank.com.br/exchange?src=brl&dest=usd&v
 print(url.url)
 
 src, dest = url.extractArgs()
-print(src, dest)
+value = url.extractValue()
+print(src, dest, value)

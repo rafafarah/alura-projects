@@ -38,3 +38,11 @@ class UrlArgsExtractor:
     def replaceSrcIfEqualDest(self):
         self.url = self.url.replace("dest", "brl", 1)
         print(self.url)
+
+    def extractValue(self):
+        value_word = "value="
+
+        value_index_start = self.findCurrencyIdx(value_word)
+        value = self.url[value_index_start:]
+
+        return int(value)
