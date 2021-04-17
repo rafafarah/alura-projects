@@ -21,3 +21,6 @@ print(url.url)
 src, dest = url.extractCurrencies()
 value = url.extractValue()
 print(src, dest, value)
+
+print(len(url))
+print(url)

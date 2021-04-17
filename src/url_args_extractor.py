@@ -3,7 +3,18 @@ class UrlArgsExtractor:
         if self.isUrlValid(url):
             self.url = url.lower()
         else:
-         raise LookupError("Invalid URL")
+         raise AttributeError("Invalid URL")
+
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        value = self.extractValue()
+        src, dest = self.extractCurrencies()
+        return f"{value} {src} = {value * 5} {dest}"
+
+    def __eq__(self, other):
+        return self.url == other.url
 
     @staticmethod
     def isUrlValid(url):
