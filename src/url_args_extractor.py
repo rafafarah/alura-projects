@@ -12,7 +12,7 @@ class UrlArgsExtractor:
         else:
             return False
 
-    def extractArgs(self):
+    def extractCurrencies(self):
         src_word = "src=" 
         dest_word = "dest="
         value_word = "value="

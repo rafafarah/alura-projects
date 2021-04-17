@@ -15,9 +15,9 @@
 
 from url_args_extractor import UrlArgsExtractor
 
-url = UrlArgsExtractor("https:://www.bytebank.com.br/exchange?src=brl&dest=usd&value=1500")
+url = UrlArgsExtractor("https://www.bytebank.com.br/exchange?Src=brl&dest=usd&value=1500")
 print(url.url)
 
-src, dest = url.extractArgs()
+src, dest = url.extractCurrencies()
 value = url.extractValue()
 print(src, dest, value)
