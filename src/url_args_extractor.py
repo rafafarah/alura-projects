@@ -19,11 +19,14 @@ class UrlArgsExtractor:
 
         src_index_start = self.findCurrencyIdx(src_word)
         src_index_end = self.url.find(dest_word) - 1
+        src = self.url[src_index_start:src_index_end]
+
+        if (src == dest_word[:len(dest_word)-1]):
+            self.replaceSrcIfEqualDest()
+            src = "brl"
 
         dest_index_start = self.findCurrencyIdx(dest_word)
         dest_index_end = self.url.find(value_word) - 1
-        
-        src = self.url[src_index_start:src_index_end]
         dest = self.url[dest_index_start:dest_index_end]
 
         return src, dest
@@ -31,3 +34,7 @@ class UrlArgsExtractor:
     # return start index of currency
     def findCurrencyIdx(self, currency):
         return self.url.find(currency) + len(currency)
+
+    def replaceSrcIfEqualDest(self):
+        self.url = self.url.replace("dest", "brl", 1)
+        print(self.url)
