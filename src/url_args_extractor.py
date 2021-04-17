@@ -1,13 +1,13 @@
 class UrlArgsExtractor:
     def __init__(self, url):
         if self.isUrlValid(url):
-            self.url = url
+            self.url = url.lower()
         else:
          raise LookupError("Invalid URL")
 
     @staticmethod
     def isUrlValid(url):
-        if url:
+        if url and url.startswith("https://www.bytebank.com.br"):
             return True
         else:
             return False
