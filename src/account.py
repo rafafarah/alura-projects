@@ -11,7 +11,7 @@ class Account(metaclass=ABCMeta):
     def __eq__(self, other):
         if type(other) != Account:
             return False
-        return self.id == other.id
+        return self._id == other._id
 
     def deposit(self, value):
         self._balance += value
