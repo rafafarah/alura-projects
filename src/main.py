@@ -38,6 +38,17 @@ def test_numpy():
     np_array += 3
     print(np_array)
 
+def test_position_in_list():
+    ages = [15, 87, 32, 65, 56, 32, 49, 37]
+    for i in range(len(ages)):
+        print(i, ages[i])
+
+    l = list(enumerate(ages))
+    print(l)
+
+    for index, age in enumerate(ages):
+        print(index, age)
+
 
 if __name__ == "__main__":
-    test_numpy()
+    test_position_in_list()
