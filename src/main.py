@@ -82,6 +82,16 @@ def test_sort_account():
     for ac in sorted(acs):
         print(ac)
 
+def test_total_ordering():
+    ac15 = CheckingAccount(15)
+    ac15.deposit(1000)
+
+    ac16 = SavingAccount(16)
+    ac16.deposit(1000)
+
+    print(ac15 <= ac16)
+
+
 
 if __name__ == "__main__":
-    test_sort_account()
+    test_total_ordering()
