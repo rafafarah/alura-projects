@@ -1,4 +1,6 @@
-class Account:
+from abc import ABCMeta, abstractmethod
+
+class Account(metaclass=ABCMeta):
     def __init__(self, id):
         self._id = id
         self._balance = 0
@@ -8,6 +10,10 @@ class Account:
 
     def deposit(self, value):
         self._balance += value
+
+    @abstractmethod
+    def after_mount():
+        pass
 
 
 class CheckingAccount(Account):
