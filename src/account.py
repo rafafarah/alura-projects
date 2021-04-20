@@ -9,12 +9,15 @@ class Account(metaclass=ABCMeta):
         return f">> id {self._id} balance {self._balance} <<"
 
     def __eq__(self, other):
-        if type(other) != Account:
-            return False
-        return self._id == other._id
+        if isinstance(other, Account):
+            return self._id == other._id
+        return False
 
     def __lt__(self, other):
-        return self._id < other._id
+        if self._id != other._id:
+            return self._id < other._id
+
+        return self._balance < other._balance
 
     def deposit(self, value):
         self._balance += value
