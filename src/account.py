@@ -13,6 +13,9 @@ class Account(metaclass=ABCMeta):
             return False
         return self._id == other._id
 
+    def __lt__(self, other):
+        return self._id < other._id
+
     def deposit(self, value):
         self._balance += value
 
