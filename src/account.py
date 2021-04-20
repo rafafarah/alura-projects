@@ -9,3 +9,12 @@ class Account:
     def deposit(self, value):
         self._balance += value
 
+
+class CheckingAccount(Account):
+    def after_mount(self):
+        self._balance -= 2
+
+class SavingAccount(Account):
+    def after_mount(self):
+        self._balance *= 1.01
+        self._balance -= 3
