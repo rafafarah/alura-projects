@@ -60,5 +60,28 @@ def test_sort_list():
     print(ages)
 
 
+def test_sort_account():
+    def extract_id(ac):
+        return ac._id
+
+    ac15 = CheckingAccount(15)
+    ac15.deposit(1000)
+
+    ac16 = SavingAccount(16)
+    ac16.deposit(1000)
+
+    acs = [ac16, ac15]
+
+    for ac in sorted(acs, key=extract_id):
+        print(ac)
+
+    from operator import attrgetter
+    for ac in sorted(acs, key=attrgetter("_id")):
+        print(ac)
+
+    for ac in sorted(acs):
+        print(ac)
+
+
 if __name__ == "__main__":
-    test_sort_list()
+    test_sort_account()
