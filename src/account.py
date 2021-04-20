@@ -1,5 +1,7 @@
 from abc import ABCMeta, abstractmethod
+from functools import total_ordering
 
+@total_ordering
 class Account(metaclass=ABCMeta):
     def __init__(self, id):
         self._id = id
