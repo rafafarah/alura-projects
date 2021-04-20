@@ -8,6 +8,11 @@ class Account(metaclass=ABCMeta):
     def __str__(self):
         return f">> id {self._id} balance {self._balance} <<"
 
+    def __eq__(self, other):
+        if type(other) != Account:
+            return False
+        return self.id == other.id
+
     def deposit(self, value):
         self._balance += value
 
