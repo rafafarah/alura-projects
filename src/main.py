@@ -49,6 +49,16 @@ def test_position_in_list():
     for index, age in enumerate(ages):
         print(index, age)
 
+def test_sort_list():
+    ages = [15, 87, 32, 65, 56, 32, 49, 37]
+    print(ages)
+    print(sorted(ages))
+    print(sorted(ages, reverse=True))
+    print(list(reversed(ages)))
+
+    ages.sort(reverse=True)
+    print(ages)
+
 
 if __name__ == "__main__":
-    test_position_in_list()
+    test_sort_list()
