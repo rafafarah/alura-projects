@@ -21,6 +21,16 @@ def test_set():
     for user in watched_exclusive:
         print(user)
 
+def test_modifying_set():
+    user = {1, 5, 76, 34, 52, 13, 17}
+    print(len(user))
+    user.add(765)
+    print(len(user))
+
+    # frozenset is a not mutable set
+    frozen = frozenset(user)
+    print(frozen)
+
 
 if __name__ == "__main__":
-    test_set()
+    test_modifying_set()
