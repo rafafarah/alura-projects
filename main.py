@@ -75,6 +75,33 @@ def test_iterate_dict():
     for key, value in dic.items():
         print(key, ":", value)
 
+def test_defaultdict():
+    text = "Welcome my name is Jorge I like names vey much and I have a dog and I like dog very much"
+    text = text.lower()
+
+    # building a dictionary from text
+    dic = {}
+    for word in text.split():
+        dic[word] = dic.get(word, 0) + 1
+    print(dic)
+    print()
+    from collections import defaultdict
+    # use defaultdict with int to return 0 as default value
+    dic_default = defaultdict(int)
+    for word in text.split():
+        dic_default[word] += 1
+    print(dic_default)
+
+def test_counter_dict():
+    from collections import Counter
+    text = "Welcome my name is Jorge I like names vey much and I have a dog and I like dog very much"
+    text = text.lower()
+
+    # use Counter direct with iterable
+    dic_default = Counter(text.split())
+    print(dic_default)
+
+
 
 if __name__ == "__main__":
-    test_iterate_dict()
+    test_counter_dict()
