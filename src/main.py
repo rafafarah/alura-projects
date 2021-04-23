@@ -1,6 +1,7 @@
 from cpf import Cpf
 from cnpj import Cnpj
 from doc import Doc
+from tel import Tel
 
 def test_cpf():
     cpf_doc = 52998224725
@@ -18,7 +19,31 @@ def test_doc_factory():
     doc = Doc.create(cnpj_doc)
     print(doc)
 
+def test_email_pattern():
+    import re
+    # \d is equivalent to [0-9]
+    pattern = "\d[a-z]{2}[0-9]"
+    text = "123 1ac2 1cc aa1"
+    print(re.search(pattern, text).group())
+
+    # \w include alphanumeric and underscore charactere
+    pattern_email = "\w{1,50}@\w{1,10}.\w{2,3}(.\w{2,3})?"
+    email = "jorge@bol.com"
+    print(re.search(pattern_email, email).group())
+
+def test_telephone_pattern():
+    import re
+
+    pattern = "\d{2}\d{4,5}\d{4}"
+    tel = "jorge@bol.com cel 01234567890"
+    print(re.search(pattern, tel).group())
+
+def test_tel():
+    tel_number = 353798346854
+    tel = Tel(tel_number)
+    print(tel._tel)
+    print(tel)
 
 
 if __name__ == "__main__":
-    test_doc_factory()
+    test_tel()
