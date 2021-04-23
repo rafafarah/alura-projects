@@ -2,7 +2,6 @@ from validate_docbr import CNPJ
 
 class Cnpj:
     def __init__(self, cnpj):
-        cnpj = str(cnpj)
         if self.isvalid(cnpj):
             self._cnpj = cnpj
         else:
@@ -12,7 +11,7 @@ class Cnpj:
         return self.format()
 
     def isvalid(self, cnpj):
-        return 14 == len(cnpj) and CNPJ().validate(cnpj)
+        return CNPJ().validate(cnpj)
 
     def format(self):
         return CNPJ().mask(self._cnpj)
