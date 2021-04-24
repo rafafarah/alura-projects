@@ -2,6 +2,7 @@ from cpf import Cpf
 from cnpj import Cnpj
 from doc import Doc
 from tel import Tel
+from date import Date
 
 def test_cpf():
     cpf_doc = 52998224725
@@ -44,6 +45,15 @@ def test_tel():
     print(tel._tel)
     print(tel)
 
+def test_date():
+    import time
+    date = Date()
+    time.sleep(10)
+    print(date.get_month())
+    print(date.get_weekday())
+    print(date)
+    print(date.delta())
+
 
 if __name__ == "__main__":
-    test_tel()
+    test_date()
