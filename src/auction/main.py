@@ -30,7 +30,7 @@ def test_inspector():
 
     inspector = Inspector()
     inspector.inspect(auction)
-    print(f'Higher bid: {inspector.higher_bid}, Lower bid: {inspector.lower_bid}')
+    print(f'Highest bid: {inspector.highest_bid}, Lowest bid: {inspector.lowest_bid}')
 
 
 if __name__ == "__main__":
