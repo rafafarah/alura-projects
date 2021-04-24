@@ -3,7 +3,7 @@ from src.auction.user import User
 from src.auction.bid import Bid
 from src.auction.auction import Auction
 
-class TestInspector(TestCase):
+class TestAuction(TestCase):
     # should run before every test case
     def setUp(self):
         self.jorge = User('Jorge')
