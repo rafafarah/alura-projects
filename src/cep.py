@@ -1,3 +1,5 @@
+import requests
+
 class Address:
     def __init__(self, cep):
         cep = str(cep)
@@ -14,3 +16,6 @@ class Address:
 
     def format(self):
         return "{}-{}".format(self._cep[:5], self._cep[5:])
+
+    def access_via_cep(self):
+        print(requests.get("https://viacep.com.br/ws/" + self._cep + "/json").text)

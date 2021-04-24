@@ -56,7 +56,8 @@ def test_date():
     print(date.delta())
 
 def test_cep():
-    add = Address("12345678")
+    add = Address("01001001")
+    add.access_via_cep()
     print(add)
 
 
