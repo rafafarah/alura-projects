@@ -17,5 +17,7 @@ class Address:
     def format(self):
         return "{}-{}".format(self._cep[:5], self._cep[5:])
 
+    # return bairro, localidade and uf
     def access_via_cep(self):
-        print(requests.get("https://viacep.com.br/ws/" + self._cep + "/json").text)
+        req = requests.get("https://viacep.com.br/ws/" + self._cep + "/json").json()
+        return req['bairro'], req['localidade'], req['uf']

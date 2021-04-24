@@ -57,8 +57,8 @@ def test_date():
 
 def test_cep():
     add = Address("01001001")
-    add.access_via_cep()
-    print(add)
+    bairro, cidade, estado = add.access_via_cep()
+    print(add, bairro, cidade, estado)
 
 
 if __name__ == "__main__":
