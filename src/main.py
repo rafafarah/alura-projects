@@ -3,6 +3,7 @@ from cnpj import Cnpj
 from doc import Doc
 from tel import Tel
 from date import Date
+from cep import Address
 
 def test_cpf():
     cpf_doc = 52998224725
@@ -54,6 +55,10 @@ def test_date():
     print(date)
     print(date.delta())
 
+def test_cep():
+    add = Address("12345678")
+    print(add)
+
 
 if __name__ == "__main__":
-    test_date()
+    test_cep()
