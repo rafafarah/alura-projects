@@ -1,5 +1,5 @@
 import sys
-from auction import Auction
+from src.auction.auction import Auction
 
 class Inspector:
     def __init__(self):

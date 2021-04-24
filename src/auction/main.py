@@ -1,7 +1,7 @@
-from user import User
-from bid import Bid
-from auction import Auction
-from inspector import Inspector
+from src.auction.user import User
+from src.auction.bid import Bid
+from src.auction.auction import Auction
+from src.auction.inspector import Inspector
 
 def test_auction():
     jorge = User('Jorge')
