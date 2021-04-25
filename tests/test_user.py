@@ -1,5 +1,6 @@
 from src.auction.user import User
 from src.auction.auction import Auction
+from src.auction.exceptions import InvalidBid
 import pytest
 
 @pytest.fixture
@@ -26,5 +27,5 @@ def test_shoud_place_bid_when_wallet_balance_is_equal_to_bid(jorge, auction):
     assert 0 == jorge.wallet
 
 def test_shoud_not_place_bid_when_wallet_balance_is_less_than_bid(jorge, auction):
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidBid):
         jorge.place_bid(auction, 150)

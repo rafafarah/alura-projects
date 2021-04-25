@@ -2,6 +2,7 @@ from unittest import TestCase
 from src.auction.user import User
 from src.auction.bid import Bid
 from src.auction.auction import Auction
+from src.auction.exceptions import InvalidBid
 
 class TestAuction(TestCase):
     # should run before every test case
@@ -51,7 +52,7 @@ class TestAuction(TestCase):
         self.assertEqual(2, len(self.auction.bids))
 
     def test_should_not_place_bid_when_current_and_previous_user_are_equal(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidBid):
             self.auction.place_bid(self.bid_jorge)
             self.auction.place_bid(self.bid_jorge)
 
@@ -64,7 +65,7 @@ class TestAuction(TestCase):
         self.assertEqual(2, len(self.auction.bids))
 
     def test_should_not_place_bids_when_added_in_descending_order(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidBid):
             jeff = User('Jefferson')
             bid_jeff = Bid(jeff, 150)
             self.auction.place_bid(bid_jeff)

@@ -1,4 +1,5 @@
 from src.auction.bid import Bid
+from src.auction.exceptions import InvalidBid
 
 class Auction:
 
@@ -17,7 +18,7 @@ class Auction:
 
             self.__bids.append(bid)
         else:
-            raise ValueError('User cannot place two bids in a row, neither place a smaller than last bid')
+            raise InvalidBid('User cannot place two bids in a row, neither place a smaller than last bid')
 
     @property
     def bids(self):

@@ -1,4 +1,5 @@
 from src.auction.bid import Bid
+from src.auction.exceptions import InvalidBid
 
 class User:
 
@@ -12,7 +13,7 @@ class User:
             auction.place_bid(bid)
             self.__wallet -= value
         else:
-            raise ValueError('Bid value should be less than wallet')
+            raise InvalidBid('Bid value should be less than wallet')
 
     @property
     def name(self):
