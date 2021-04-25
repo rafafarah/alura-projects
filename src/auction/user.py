@@ -7,7 +7,7 @@ class User:
         self.__wallet = wallet
 
     def place_bid(self, auction, value):
-        if self.__wallet >= value:
+        if self._is_value_valid(value):
             bid = Bid(self, value)
             auction.place_bid(bid)
             self.__wallet -= value
@@ -21,3 +21,6 @@ class User:
     @property
     def wallet(self):
         return self.__wallet
+
+    def _is_value_valid(self, value):
+        return self.__wallet >= value
