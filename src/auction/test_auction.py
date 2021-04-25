@@ -19,15 +19,6 @@ class TestAuction(TestCase):
         self.assertEqual(150, self.auction.highest_bid)
         self.assertEqual(100, self.auction.lowest_bid)
 
-    def test_should_get_highest_and_lowest_bids_when_added_in_descending_order(self):
-        jeff = User('Jefferson')
-        bid_jeff = Bid(jeff, 150)
-        self.auction.place_bid(bid_jeff)
-        self.auction.place_bid(self.bid_jorge)
-
-        self.assertEqual(150, self.auction.highest_bid)
-        self.assertEqual(100, self.auction.lowest_bid)
-
     def test_should_get_same_value_for_highest_and_lowest_bids_when_auction_has_a_single_bid(self):
         self.auction.place_bid(self.bid_jorge)
 
