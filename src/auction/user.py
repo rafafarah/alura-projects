@@ -7,9 +7,12 @@ class User:
         self.__wallet = wallet
 
     def place_bid(self, auction, value):
-        bid = Bid(self, value)
-        auction.place_bid(bid)
-        self.__wallet -= value
+        if self.__wallet >= value:
+            bid = Bid(self, value)
+            auction.place_bid(bid)
+            self.__wallet -= value
+        else:
+            raise ValueError('Bid value should be less than wallet')
 
     @property
     def name(self):
