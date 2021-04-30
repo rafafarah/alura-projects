@@ -1,17 +1,30 @@
-// var filmes = ["Star Wars", "Toy Story", "Interstellar", "Home Alone", "Marley & Me"]
-
-// for (var i = 0; i < filmes.length; i++) {
-//   console.log(filmes[i])
-// }
+var listaFilmes = []
 
 
-var listaFilmes = ["https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX182_CR0,0,182,268_AL_.jpg", "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg", "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", "https://m.media-amazon.com/images/M/MV5BMzFkM2YwOTQtYzk2Mi00N2VlLWE3NTItN2YwNDg1YmY0ZDNmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg"]
+function adicionarFilme() {
+  var campoFilme = document.querySelector('#filme')
+  if (campoFilme.value.endsWith(".jpg")) {
+    // buscar filme em listaFilme e add e printar caso não tiver sido adicionado antes
+    listarFilmesNaTela(campoFilme.value)
+  } else {
+    // alert("Not a image")
+  }
 
-for (var i = 0; i < listaFilmes.length; i++) {
-  document.write("<img src = " + listaFilmes[i] + ">")
+  campoFilme.value = ""
+}
+
+function listarFilmesNaTela(filme) {
+  var listaFilmes = document.querySelector('#listaFilmes')
+  var elementoFilme = "<img src=" + filme + ">"
+  listaFilmes.innerHTML += elementoFilme
 }
 
 /* Challenge */
 /*Paulo: Add movie name or link below image
 Rafa: Ask the movies to display
 Gui: Don't show move twice*/
+
+/* Challenge */
+/*Paulo: Add trailer embedded; understand document.querySelector
+Rafa: Understand innerHTML
+Gui: Move image validation to function*/
