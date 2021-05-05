@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 '''
 Desafio 01: Investigar por que a classe tratamento é tão desbalanceada?
@@ -13,6 +12,7 @@ Desafio 08: Resumo do que você aprendeu com os dados
 '''
 data = pd.read_csv('dados/dados_experimentos.zip', compression='zip')
 def test_filter():
+    import matplotlib.pyplot as plt
     # print first rows, default 5
     print(data.head())
 
@@ -44,6 +44,32 @@ def test_filter():
     filtered_data = data[data['g-0'] > 0]
     print(filtered_data.head())
 
+'''
+Desafio 01: Sort graph
+Desafio 02: Change axis name
+'''
+def test_compound_graph():
+    map = {'droga':'composto'}
+    data.rename(columns=map, inplace=True)
+    # get index of 5 most frequent compounds
+    compound_ids = data['composto'].value_counts().index[:5]
+
+    data_compound = data.query('composto in @compound_ids')
+
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set()
+    plt.figure(figsize=(8,6))
+    x = 'composto'
+    ax = sns.countplot(x = x,
+                       data=data_compound,
+                       # value_counts(ascending=True)
+                       order = data_compound[x].value_counts().index)
+    ax.set_title('Top 5 Compounds')
+    plt.show()
+
+
 
 if __name__ == "__main__":
-    test_filter()
+    test_compound_graph()
