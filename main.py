@@ -80,6 +80,8 @@ Desafio 03: Plot graphs side by side
     fig, axes = plt.subplots(1, 2)
     data['g-0'].hist(bins=200, ax=axes[0])
     data['g-19'].hist(bins=200, ax=axes[1])
+Desafio 04: Plot graphs with seaborn
+Desafio 05: Check stats in describe()
 '''
 def test_histogram():
     import matplotlib.pyplot as plt
@@ -87,6 +89,11 @@ def test_histogram():
     data['g-19'].hist(bins=200)
     plt.show()
 
+def test_describe_g():
+    import matplotlib.pyplot as plt
+    data.loc[:, 'g-0':'g-771'].describe().T.hist(bins=30)
+    plt.show()
+
 
 if __name__ == "__main__":
-    test_histogram()
+    test_describe_g()
