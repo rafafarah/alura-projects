@@ -1,6 +1,7 @@
 import pandas as pd
 
 '''
+Aula 1
 Desafio 01: Investigar por que a classe tratamento é tão desbalanceada?
 Desafio 02: Plotar as 5 últimas linhas da tabela
 Desafio 03: Proporção das classes tratamento
@@ -45,7 +46,12 @@ def test_filter():
     print(filtered_data.head())
 
 '''
+Aula 2
 Desafio 01: Sort graph
+    ax = sns.countplot(x = x,
+                       data=data_compound,
+                       # value_counts(ascending=True)
+                       order = data_compound[x].value_counts().index)
 Desafio 02: Change axis name
 '''
 def test_compound_graph():
@@ -69,7 +75,18 @@ def test_compound_graph():
     ax.set_title('Top 5 Compounds')
     plt.show()
 
+'''
+Desafio 03: Plot graphs side by side
+    fig, axes = plt.subplots(1, 2)
+    data['g-0'].hist(bins=200, ax=axes[0])
+    data['g-19'].hist(bins=200, ax=axes[1])
+'''
+def test_histogram():
+    import matplotlib.pyplot as plt
+    data['g-0'].hist(bins=200)
+    data['g-19'].hist(bins=200)
+    plt.show()
 
 
 if __name__ == "__main__":
-    test_compound_graph()
+    test_histogram()
