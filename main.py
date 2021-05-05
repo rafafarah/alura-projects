@@ -89,11 +89,29 @@ def test_histogram():
     data['g-19'].hist(bins=200)
     plt.show()
 
+# g: gene expression
 def test_describe_g():
     import matplotlib.pyplot as plt
     data.loc[:, 'g-0':'g-771'].describe().T.hist(bins=30)
     plt.show()
 
+# c: cell line
+def test_describe_c():
+    import matplotlib.pyplot as plt
+    data.loc[:, 'c-0':'c-99'].describe().T.hist(bins=30)
+    plt.show()
+
+'''
+Desafio 06: Reflect about graph size and visualization
+Desafio 07: Plot other boxplots and histogram
+'''
+def test_boxplot():
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    sns.boxplot(x='g-0', data=data)
+    sns.boxplot(y='g-0', x='tratamento', data=data)
+    plt.show()
+
 
 if __name__ == "__main__":
-    test_describe_g()
+    test_boxplot()
