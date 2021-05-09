@@ -207,21 +207,19 @@ Challenge 02: Create column 'is_control_group' if 'tratamento == com_controle'
 Challenge 03: Create different columns to each 'tempo'
 Challenge 04: Study dataframe merge types: https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 '''
+results['n_moa'] = results.drop('id', axis=1).sum(axis=1)
+results['is_moa_active'] = (results['n_moa'] != 0)
+# merge results 'id', 'n_moa' and 'is_moa_active' into data
+# use 'id' as a reference
+merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
 def test_control_group_activations():
-    results['n_moa'] = results.drop('id', axis=1).sum(axis=1)
-    results['is_moa_active'] = (results['n_moa'] != 0)
-
-    # merge results 'id', 'n_moa' and 'is_moa_active' into data
-    # use 'id' as a reference
-    merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
     print(merged_data.query('tratamento == "com_controle"')['is_moa_active'].unique())
 
 def test_compound_inactive():
-    results['n_moa'] = results.drop('id', axis=1).sum(axis=1)
-    results['is_moa_active'] = (results['n_moa'] != 0)
-    merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
-
     print(merged_data.query('tratamento == "com_droga"')['is_moa_active'].value_counts())
+
+def test_boxplot_():
+    pass
 
 
 if __name__ == "__main__":
