@@ -218,9 +218,18 @@ def test_control_group_activations():
 def test_compound_inactive():
     print(merged_data.query('tratamento == "com_droga"')['is_moa_active'].value_counts())
 
-def test_boxplot_():
-    pass
+'''
+Challenge 05: Do further analisys, considering 'tempo' and 'dose'
+Challenge 06: Find if there is any compound that activate any moa with a certain configuration
+              but doesn't activate it with another configuration
+Challenge 07: Find if there is any compound that activate a moa with a certain configuration
+              and activate other moas with a different configuration
+'''
+def test_boxplot_main_compound():
+    main_compound = merged_data['droga'].value_counts().index[:5]
+    sns.boxplot(data = merged_data.query('droga in @main_compound'), y='g-0', x='droga', hue='is_moa_active')
+    plt.show()
 
 
 if __name__ == "__main__":
-    test_compound_inactive()
+    test_boxplot_main_compound()
