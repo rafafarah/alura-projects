@@ -202,6 +202,20 @@ def test_most_active_compound():
     count_compounds = results.select_dtypes('int64').sum(axis=1).sort_values(ascending=False)
     print(count_compounds)
 
+'''
+Challenge 02: Create column 'is_control_group' if 'tratamento == com_controle'
+Challenge 03: Create different columns to each 'tempo'
+Challenge 04: Study dataframe merge types: https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
+'''
+def test_control_group_activations():
+    results['n_moa'] = results.drop('id', axis=1).sum(axis=1)
+    results['is_moa_active'] = (results['n_moa'] != 0)
+
+    # merge results 'id', 'n_moa' and 'is_moa_active' into data
+    # use 'id' as a reference
+    merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
+    print(merged_data.query('tratamento == "com_controle"')['is_moa_active'].unique())
+
 
 if __name__ == "__main__":
-    test_most_active_compound()
+    test_control_group_activations()
