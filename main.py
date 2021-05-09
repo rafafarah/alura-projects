@@ -216,6 +216,13 @@ def test_control_group_activations():
     merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
     print(merged_data.query('tratamento == "com_controle"')['is_moa_active'].unique())
 
+def test_compound_inactive():
+    results['n_moa'] = results.drop('id', axis=1).sum(axis=1)
+    results['is_moa_active'] = (results['n_moa'] != 0)
+    merged_data = pd.merge(data, results[['id', 'n_moa', 'is_moa_active']], on='id')
+
+    print(merged_data.query('tratamento == "com_droga"')['is_moa_active'].value_counts())
+
 
 if __name__ == "__main__":
-    test_control_group_activations()
+    test_compound_inactive()
