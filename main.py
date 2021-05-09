@@ -187,8 +187,8 @@ def test_correlation_c():
 Aula 4
 Challenge 01: Find top 10 actions of moa (sulfix inhibitor, antagonist, agonist, ...)
 '''
+results = pd.read_csv('dados/dados_resultados.csv')
 def test_most_activated_moa():
-    results = pd.read_csv('dados/dados_resultados.csv')
     print(results['acetylcholine_receptor_agonist'].unique())
 
     # moa =  mechanism of activation
@@ -198,6 +198,10 @@ def test_most_activated_moa():
     count_moa = results.select_dtypes('int64').sum().sort_values(ascending=False)
     print(count_moa)
 
+def test_most_active_compound():
+    count_compounds = results.select_dtypes('int64').sum(axis=1).sort_values(ascending=False)
+    print(count_compounds)
+
 
 if __name__ == "__main__":
-    test_most_activated_moa()
+    test_most_active_compound()
