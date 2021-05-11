@@ -2,9 +2,15 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 '''
-Aula 1
+Class 1
 Challenge 01: Investigar por que a classe tratamento é tão desbalanceada?
 Challenge 02: Plotar as 5 últimas linhas da tabela
 Challenge 03: Proporção das classes tratamento
@@ -48,7 +54,7 @@ def test_filter():
     print(filtered_data.head())
 
 '''
-Aula 2
+Class 2
 Challenge 01: Sort graph
     ax = sns.countplot(x = x,
                        data=data_compound,
@@ -108,7 +114,7 @@ def test_boxplot():
     plt.show()
 
 '''
-Aula 3
+Class 3
 Challenge 01: Create frequency table with pandas.groupby()
 Challenge 02: Normalize frequency table by columns
 Challenge 03: Test other aggfunc
@@ -184,7 +190,7 @@ def test_correlation_c():
     plt.show()
 
 '''
-Aula 4
+Class 4
 Challenge 01: Find top 10 actions of moa (sulfix inhibitor, antagonist, agonist, ...)
 '''
 results = pd.read_csv('dados/dados_resultados.csv')
@@ -230,6 +236,66 @@ def test_boxplot_main_compound():
     sns.boxplot(data = merged_data.query('droga in @main_compound'), y='g-0', x='droga', hue='is_moa_active')
     plt.show()
 
+'''
+Class 5
+Initial machine learning problem:
+Classify based on 'is_moa_active'
+'''
+x = merged_data.select_dtypes('float64')
+y = merged_data['is_moa_active']
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state=376) # use 'stratify=y' split proportionaly to y
+def test_machine_learning_regression():
+    regression_model = LogisticRegression(max_iter=1000)
+    regression_model.fit(x_train, y_train)
+    print(regression_model.score(x_test, y_test))
+
+    dummy_model = DummyClassifier('most_frequent')
+    dummy_model.fit(x_train, y_train)
+    prediction = dummy_model.predict(x_test)
+    print(accuracy_score(y_test, prediction))
+
+def test_machine_learning_decition_tree():
+    test=[]
+    train=[]
+    for i in range(1,15):
+        tree_model = DecisionTreeClassifier(max_depth=i)
+        tree_model.fit(x_train, y_train)
+        test.append(tree_model.score(x_test, y_test))
+        train.append(tree_model.score(x_train, y_train))
+
+    print(test, train)
+
+'''
+    # print decision tree
+    from sklearn import tree
+
+    fig, ax = plt.subplots(figsize=(15, 10), facecolor='k')
+    tree.plot_tree(tree_model,
+                   ax=ax,
+                   fontsize=10,
+                   rounded=True,
+                   filled=True,
+                   feature_names=x_train.columns,
+                   class_names=['Not Activated', 'Activated'])
+    plt.show()
+'''
+
+'''
+Challenge 01: Try different models or other parameters
+Challenge 02: Study Sklearn documentation
+Challenge 03: Choosing the right estimator
+Challenge 04: Try different questions restricting numbers of moa activated
+Challenge 05: Choose the most used drug to try to predict if tested drug is control group or real drug
+'''
+def test_machine_learning_random_forest():
+    x = merged_data.drop(['id', 'n_moa', 'is_moa_active', 'droga'], axis=1)
+    x = pd.get_dummies(x, columns=['tratamento', 'dose', 'tempo'])
+    y = merged_data['is_moa_active']
+
+    random_forest_model = RandomForestClassifier()
+    random_forest_model.fit(x_train, y_train)
+    print(random_forest_model.score(x_test, y_test))
+
 
 if __name__ == "__main__":
-    test_boxplot_main_compound()
+    test_machine_learning_random_forest()
