@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -22,11 +24,10 @@ public class App {
         List<Map<String, String>> listOfMovies = parser.parse(body);
 
         // show data
+        var stickerFactory = new StickerFactory();
         for (Map<String,String> movie : listOfMovies) {
-            System.out.println(movie.get("title"));
-            System.out.println(movie.get("image"));
-            System.out.println(movie.get("imDbRating"));
-            System.out.println();
+            InputStream inputStream = new URL(movie.get("image")).openStream();
+            stickerFactory.create(inputStream, "output/" + movie.get("title") + ".png");
         }
     }
 }
@@ -38,4 +39,6 @@ public class App {
  * 3- Hide API key in a configuration file
  *
  * 4- Center sticker text based on the text length
+ * 5- Change font
+ * 6- Add a new image and a text to the original image
  */

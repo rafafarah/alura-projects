@@ -3,15 +3,18 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
 public class StickerFactory {
     
-    public void create() throws Exception {
+    public void create(InputStream inputStream, String outputFileName) throws Exception {
 
         // read image
-        BufferedImage inputImage = ImageIO.read(new File("input/movie.jpg"));
+        // InputStream inputStream = new FileInputStream(new File("input/movie.jpg"));
+        // InputStream inputStream = new URL("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies_1.jpg").openStream();
+        BufferedImage inputImage = ImageIO.read(inputStream);
 
         // create new image with transpatent background
         int width = inputImage.getWidth();
@@ -31,14 +34,9 @@ public class StickerFactory {
         graphics.drawString("Finally weekend", 85, newHeight - 100);
 
         // save new image in a file
-        ImageIO.write(outputImage, "png", new File("output/sticker.png"));
+        ImageIO.write(outputImage, "png", new File(outputFileName));
         // File myFile = new File("output/sticker.png");
         // System.out.println("Attempting to read from file in: "+myFile.getCanonicalPath());
         // ImageIO.write(outputImage, "png", myFile);
-    }
-
-    public static void main(String[] args) throws Exception {
-        var stickerFactory = new StickerFactory();
-        stickerFactory.create();
     }
 }
