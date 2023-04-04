@@ -36,4 +36,6 @@ public class App {
  * 1- Use different endpoits
  * 2- Improve output
  * 3- Hide API key in a configuration file
+ *
+ * 4- Center sticker text based on the text length
  */
