@@ -27,7 +27,9 @@ public class App {
         var stickerFactory = new StickerFactory();
         for (Map<String,String> movie : listOfMovies) {
             InputStream inputStream = new URL(movie.get("image")).openStream();
-            stickerFactory.create(inputStream, "output/" + movie.get("title") + ".png");
+            var title = movie.get("title");
+            title = title.replace(": "," ");
+            stickerFactory.create(inputStream, "output/" + title + ".png");
         }
     }
 }
