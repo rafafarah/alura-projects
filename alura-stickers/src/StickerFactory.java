@@ -8,7 +8,7 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class StickerFactory {
-    
+
     public void create(InputStream inputStream, String outputFileName) throws Exception {
 
         // read image
