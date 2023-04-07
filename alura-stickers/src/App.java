@@ -6,10 +6,13 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // do an http connection and get top 250 movies
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json";
-        ContentExtractor extractor = new NasaContentExtractor();
+        // String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json";
+        // ContentExtractor extractor = new NasaContentExtractor();
         // String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         // ContentExtractor extractor = new ImdbContentExtractor();
+
+        String url = "http://localhost:8080/languages";
+        ContentExtractor extractor = new LanguageContentExtractor();
 
         ClientHttp clientHttp = new ClientHttp();
         String json = clientHttp.getData(url);
