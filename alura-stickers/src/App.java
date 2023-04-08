@@ -44,4 +44,8 @@ public class App {
  * 9- Map 2 lists (lambda) with java 8
  * 10- Group url and extractor in an enum
  * 11- Use more complex API
+ *
+ * 12- Finish CRUD
+ * 13- Return status 201 when adding new language
+ * 14- Create different queries
  */
